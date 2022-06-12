@@ -12,18 +12,28 @@ public class LeetCode75Questions {
     /**
      * 1st problem
      * <a href="https://leetcode.com/problems/two-sum/">link</a>
+     * Status : first time coded
      */
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         int[] res = new int[2];
 
-        for(int i=0; i<nums.length; i++) {
-            if(map.containsKey(target - nums[i])){
-                return new int[] {i, map.get(target - nums[i])};
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{i, map.get(target - nums[i])};
             } else {
                 map.put(nums[i], i);
             }
         }
         return null;
+    }
+
+    /**
+     * 2nd
+     * <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">link</a>
+     * Status : TODO
+     */
+    public int maxProfit(int[] prices) {
+        return 0;
     }
 }
