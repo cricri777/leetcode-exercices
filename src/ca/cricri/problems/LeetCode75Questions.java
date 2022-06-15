@@ -88,6 +88,34 @@ public class LeetCode75Questions {
         }
         return false;
     }
+
+
+    /**
+     * 4th
+     * <a href="https://leetcode.com/problems/maximum-subarray/">lien</a>
+     * Aisance: nulle
+     * Algorithme :
+     *
+     * Theme : Tableau, Diviser pour régner, Dynamic Programming
+     */
+    public int maxSubArray(int[] nums) {
+        if(nums.length == 0) {
+            return 0;
+        }
+        int max = nums[0];
+        int current = 0;
+        for(int i=0; i<nums.length; i++) {
+            if(current < 0) {
+                current = 0;
+            }
+
+            current += nums[i];
+            max = Math.max(max, current);
+        }
+
+        return max;
+    }
+
     public static void main(String[] args) {
         LeetCode75Questions leetCode75Questions = new LeetCode75Questions();
         System.out.println(leetCode75Questions.containsDuplicate(new int[] {1,2,3,4}));
