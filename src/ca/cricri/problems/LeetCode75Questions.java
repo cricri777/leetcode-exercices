@@ -1,9 +1,6 @@
 package ca.cricri.problems;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * TODO = <a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions">link</a>
@@ -116,8 +113,36 @@ public class LeetCode75Questions {
         return max;
     }
 
+    /**
+     * 5th
+     * <a href="https://leetcode.com/problems/maximum-product-subarray/">lien</a>
+     * Aisance: Nulle
+     * Algorithme :
+     *
+     * Theme : Tableau, Programmation Dynamique
+     */
+    public int maxProduct(int [] nums) {
+        int res = Arrays.stream(nums).max().orElse(0);
+        int min = 1;
+        int max = 1;
+
+        for (int n : nums) {
+//            if(n == 0) {
+//                min = 1;
+//                max = 1;
+//                continue;
+//            }
+            int tmp = n * max;
+            max = Math.max(Math.max(tmp, n * min), n);
+            min = Math.min(Math.min(tmp, n * min), n);
+
+            res = Math.max(res, max);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         LeetCode75Questions leetCode75Questions = new LeetCode75Questions();
-        System.out.println(leetCode75Questions.containsDuplicate(new int[] {1,2,3,4}));
+        System.out.println(leetCode75Questions.maxProduct(new int[] {-4,-3,-2}));
     }
 }
