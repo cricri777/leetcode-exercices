@@ -1,7 +1,9 @@
 package ca.cricri.problems;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * TODO = <a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions">link</a>
@@ -68,17 +70,26 @@ public class LeetCode75Questions {
     /**
      * 3rd
      * <a href="https://leetcode.com/problems/contains-duplicate/">link</a>
-     * Aisance : nulle + TODO
+     * Aisance : fort
      * Algorithme :
+     *      - utiliser HashSet
      *
      * Theme : Tableau, Table Hachage, Tri
      */
     public boolean containsDuplicate(int[] nums) {
+        Set<Integer> noDuplicateSet = new HashSet<>();
+
+        for(int i=0; i<nums.length; i++) {
+            if(noDuplicateSet.contains(nums[i])) {
+                return true;
+            } else {
+              noDuplicateSet.add(nums[i]);
+            }
+        }
         return false;
     }
     public static void main(String[] args) {
         LeetCode75Questions leetCode75Questions = new LeetCode75Questions();
-        System.out.println(leetCode75Questions.maxProfit(new int[] {7,1,5,3,6,4}));
-        System.out.println(leetCode75Questions.maxProfit(new int[] {2,1,4}));
+        System.out.println(leetCode75Questions.containsDuplicate(new int[] {1,2,3,4}));
     }
 }
