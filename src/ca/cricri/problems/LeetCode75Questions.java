@@ -1,6 +1,7 @@
 package ca.cricri.problems;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * TODO = <a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions">link</a>
@@ -86,9 +87,35 @@ public class LeetCode75Questions {
         return false;
     }
 
-
     /**
      * 4th
+     * <a href="https://leetcode.com/problems/product-of-array-except-self/">lien</a>
+     * Aisance : faible
+     * Algorithme :
+     *  - on parcour l'input pour calculer les prefix du tableau qu'on store dans resultat
+     *  - on parcour l'input à l'envers pour calculer les suffix
+     * Theme : Tableau, Prefix Sum
+     */
+    public int[] productExceptSelf(int[] nums) {
+        int [] res = new int[nums.length];
+        res[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            res[i] = nums[i-1] * res[i-1];
+        }
+
+        for (int i = nums.length-1; i >= 0; i--) {
+            if(i == nums.length - 1) {
+                continue;
+            }
+            res[i] = res[i] * nums[i+1];
+            nums[i] *= nums[i+1];
+        }
+
+        return res;
+    }
+
+    /**
+     * 5th
      * <a href="https://leetcode.com/problems/maximum-subarray/">lien</a>
      * Aisance: nulle
      * Algorithme :
@@ -114,7 +141,7 @@ public class LeetCode75Questions {
     }
 
     /**
-     * 5th
+     * 6th
      * <a href="https://leetcode.com/problems/maximum-product-subarray/">lien</a>
      * Aisance: Nulle
      * Algorithme :
@@ -143,6 +170,6 @@ public class LeetCode75Questions {
 
     public static void main(String[] args) {
         LeetCode75Questions leetCode75Questions = new LeetCode75Questions();
-        System.out.println(leetCode75Questions.maxProduct(new int[] {-4,-3,-2}));
+        leetCode75Questions.productExceptSelf(new int[]{1, 2, 3, 4});
     }
 }
