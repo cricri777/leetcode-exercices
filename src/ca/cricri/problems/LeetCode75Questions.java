@@ -128,12 +128,12 @@ public class LeetCode75Questions {
         }
         int max = nums[0];
         int current = 0;
-        for(int i=0; i<nums.length; i++) {
-            if(current < 0) {
+        for (int num : nums) {
+            if (current < 0) {
                 current = 0;
             }
 
-            current += nums[i];
+            current += num;
             max = Math.max(max, current);
         }
 
@@ -166,6 +166,18 @@ public class LeetCode75Questions {
             res = Math.max(res, max);
         }
         return res;
+    }
+
+    /**
+     * 7th
+     * <a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/">lien</a>
+     * Aisance : Nulle
+     * Algorithme :
+     *
+     * Theme : Tableau, Recherche Binaire
+     */
+    public int findMin(int[] nums) {
+        return 0;
     }
 
     public static void main(String[] args) {
